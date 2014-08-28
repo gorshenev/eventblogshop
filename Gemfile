@@ -45,4 +45,6 @@ gem 'twitter-bootstrap-rails'
 
 gem 'piggybak'
 
+gem 'rmagick'
+
 gem 'paperclip'
