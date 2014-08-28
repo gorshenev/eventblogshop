@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eventsblog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="span6 offset1">
+					<h1>EVENTBLOGSHOP</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span1 offset1">
+					<h2><%= link_to 'Posts', posts_path %></h1>
+				</div>
+				<div class="span1">
+					<h2><%= link_to 'Events', events_path %></h1>
+				</div>
+			</div>
+		</div>
+	</nav>
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<h1>Events</h1>
+
+<%= link_to 'New Event', new_event_path %>
+
+<% @events.each do |event| %>
+	<div class="event" id="<%= dom_id(event) %>">
+		<h2><%= link_to event.name, event_path(event) %></h2>
+		<p class="event_time"><%= event.time %></p>
+	</div>
+<% end %>
