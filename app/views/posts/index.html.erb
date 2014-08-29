@@ -1,12 +1,21 @@
-<h1>Bloggin' It</h1>
-
-<%= link_to 'New Post', new_post_path %>
-
-<% @posts.each do |post| %>
-	<div class="post" id="<%= dom_id(post) %>">
-		<h2><%= post.title %></h2>
-		<p><%= post.body.slice(0,500) + 
-				(post.body.length > 500 ? '...' : '') %></p>
-		<%= link_to 'Read more', post_path(post) %>
+<div class="row">
+	<div class="span9">
+		<h1 style="text-align:center">Bloggin' It</h1>
+		<%= link_to 'New Post', new_post_path %>
+		<% @posts.each do |post| %>
+			<div class="row">
+				<div class="span9">
+					<div class="post" id="<%= dom_id(post) %>">
+						<h2><%= post.title %></h2>
+						<p><%= post.body.slice(0,500) + 
+								(post.body.length > 500 ? '...' : '') %></p>
+						<%= link_to 'Read more', post_path(post) %>
+					</div>
+				</div>
+			</div>
+		<% end %>
 	</div>
-<% end %>
+	<div class="span3">
+		<%= render "shared/sidebar", :locals => {:upcoming_event => @upcoming_event, :new_product => @new_product} %>
+	</div>
+</div>

@@ -1,10 +1,13 @@
 class EventsController < ApplicationController
+	before_filter :get_event, :only => [:show, :edit, :update, :destroy]
+	before_filter :get_latest_post, :get_new_product, :only => [:index, :show]
+
 	def index
 		@events = Event.all.order(time: :asc)
 	end
 
 	def show
-		@event = Event.find(params[:id])
+		
 	end
 
 	def new
@@ -24,12 +27,10 @@ class EventsController < ApplicationController
 	end
 
 	def edit
-		@event = Event.find(params[:id])
+		
 	end
 
 	def update
-		@event = Event.find(params[:id])
-
 		if @event.update_attributes(event_params)
 			flash[:success] = "Event updated"
 			redirect to event_path(@event)
@@ -40,8 +41,6 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
-		@event = Event.find(params[:id])
-
 		if @event.destroy
 			flash[:success] = "Event deleted"
 		else
@@ -54,5 +53,17 @@ class EventsController < ApplicationController
 	private
 		def event_params
 			params.require(:event).permit(:name, :description, :time)
+		end
+
+		def get_event
+			@event = Event.find(params[:id])
+		end
+
+		def get_latest_post
+			@latest_post = Post.all.order(created_at: :desc).first
+		end
+
+		def get_new_product
+			@new_product = Product.all.order(created_at: :desc).first
 		end
 end

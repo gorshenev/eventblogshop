@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
+	before_filter :get_post, :only => [:show, :edit, :update, :destroy]
+	before_filter :get_upcoming_event, :get_new_product, :only => [:index, :show]
+
 	def index
 		@posts = Post.all.order(created_at: :desc)
 	end
 
 	def show
-		@post = Post.find(params[:id])
+		
 	end
 
 	def new
@@ -24,12 +27,10 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-		@post = Post.find(params[:id])
+		
 	end
 
 	def update
-		@post = Post.find(params[:id])
-
 		if @post.update_attributes(post_params)
 			flash[:success] = "Post updated"
 			redirect_to post_path(@post)
@@ -40,8 +41,6 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
-
 		if @post.destroy
 			flash[:success] = "Post deleted"
 		else
@@ -54,5 +53,17 @@ class PostsController < ApplicationController
 	private
 		def post_params
 			params.require(:post).permit(:title, :body)
+		end
+
+		def get_post
+			@post = Post.find(params[:id])
+		end
+
+		def get_upcoming_event
+			@upcoming_event = Event.all.order(time: :asc).first
+		end
+
+		def get_new_product
+			@new_product = Product.all.order(created_at: :desc).first
 		end
 end

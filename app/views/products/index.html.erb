@@ -1,8 +1,19 @@
-<h1>Shop</h1>
-
-<% @products.each do |product| %>
-	<%= image_tag product.photo.url(:medium) %><br>
-	<h4><%= link_to product.name, product_path(product) %></h4>
-	<p><%= product.price %></p>
-	<%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
+<div class="row">
+	<div class="span9">
+		<div class="row">
+			<h1 style="text-align:center">Shop</h1>
+			<% @products.each do |product| %>	
+				<div class="span3">
+					<%= image_tag product.photo.url(:medium) %><br>
+					<h4><%= link_to product.name, product_path(product) %></h4>
+					<p><%= product.price %></p>
+					<%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" } %><br>
+					<%= link_to 'Edit', edit_product_path(product) %><br>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="span3">
+		<%= render 'shared/sidebar' %>
+	</div>
+</div>

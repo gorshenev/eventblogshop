@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
+	before_filter :get_product, :only => [:show, :edit, :update, :destroy]
+	before_filter :get_upcoming_event, :get_latest_post, :only => [:index, :show]
+
 	def index
 		@products = Product.all
 	end
 
 	def show
-		@product = Product.find(params[:id])
+		
 	end
 
 	def new
@@ -24,12 +27,10 @@ class ProductsController < ApplicationController
 	end
 
 	def edit
-		@product = Product.find(params[:id])
+
 	end
 
 	def update
-		@product = Product.find(params[:id])
-
 		if @product.update_attributes(product_params)
 			flash[:success] = "Product updated"
 			redirect_to products_path
@@ -40,8 +41,6 @@ class ProductsController < ApplicationController
 	end
 
 	def destroy
-		@product = Product.find(params[:id])
-
 		if @product.destroy
 			flash[:success] = "Product deleted"
 		else
@@ -54,5 +53,17 @@ class ProductsController < ApplicationController
 	private
 		def product_params
 			params.require(:product).permit(:name, :description, :price, :photo)
+		end
+
+		def get_product
+			@product = Product.find(params[:id])
+		end
+
+		def get_latest_post
+			@latest_post = Post.all.order(created_at: :desc).first
+		end
+
+		def get_upcoming_event
+			@upcoming_event = Event.all.order(time: :asc).first
 		end
 end

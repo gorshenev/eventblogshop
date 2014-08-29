@@ -48,3 +48,5 @@ gem 'piggybak'
 gem 'rmagick'
 
 gem 'paperclip'
+
+gem 'calendar_helper'

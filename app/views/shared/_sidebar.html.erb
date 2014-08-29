@@ -1,0 +1,29 @@
+<div class="well sidebar-nav">
+	<% if @latest_post %>
+		<div class="row">
+			<div class="span3">
+				<h3>Latest Blog</h3>
+				<h4><%= link_to @latest_post.title, post_path(@latest_post) %></h4>
+			</div>
+		</div>
+	<% end %>
+	<% if @upcoming_event %>
+		<div class="row">
+			<div class="span3">
+				<h3>Next Event</h3>
+				<h4><%= link_to @upcoming_event.name, event_path(@upcoming_event) %></h4>
+				<p><%= @upcoming_event.time %></p>
+			</div>
+		</div>
+	<% end %>
+	<% if @new_product %>
+		<div class="row">
+			<div class="span3">
+				<h3>Newest Product</h3>
+				<%= image_tag @new_product.photo.url(:thumb) %>
+				<h4><%= link_to @new_product.name, product_path(@new_product) %></h4>
+				<p><%= @new_product.price %></p>
+			</div>
+		</div>
+	<% end %>
+</div>
