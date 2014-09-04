@@ -6,4 +6,6 @@ A friend runs a small clothing store.  She also vends at special events/festival
 
 This project is to build a framework that will cover all of these needs - a blog, an event calendar, and an online shop - all in one easily maintainable package.
 
+Will require having ImageMagick installed for paperclip gem to resize images.
+
 <tt>rake doc:app</tt>.
