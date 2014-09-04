@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all.order(time: :asc)
+		get_event_days
 	end
 
 	def show
@@ -57,6 +58,14 @@ class EventsController < ApplicationController
 
 		def get_event
 			@event = Event.find(params[:id])
+		end
+
+		def get_event_days
+			@event_days = []
+
+			@events.each do |event|
+				@event_days.push(event.time.to_date)
+			end
 		end
 
 		def get_latest_post

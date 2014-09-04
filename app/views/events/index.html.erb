@@ -1,7 +1,15 @@
 <div class="row">
 	<div class="span9">
 		<h1 style="text-align:center">Events</h1>
-		<%= calendar(:year => 2014, :month => 8, :first_day_of_week => 1) %>
+		<div id="calendar">
+			<%= calendar(:year => 2014, :month => 8, :first_day_of_week => 1) do |d| 
+				if @event_days.include?(d)
+					[d.mday, {:class => "specialDay"}]
+				else
+					[d.mday, {:class => "normalDay"}]
+				end
+			end %>
+		</div>
 		<%= link_to 'New Event', new_event_path %>
 		<% @events.each do |event| %>
 			<div class="event" id="<%= dom_id(event) %>">
