@@ -2,9 +2,14 @@
 	<div class="span9">
 		<h1 style="text-align:center">Events</h1>
 		<div id="calendar">
-			<%= calendar(:year => 2014, :month => 8, :first_day_of_week => 1) do |d| 
+			<%= calendar(:year => Date.today.year, :month => Date.today.month, :first_day_of_week => 1) do |d| 
 				if @event_days.include?(d)
 					[d.mday, {:class => "specialDay"}]
+					# @events.each do |event|
+					# 	if event.time.to_date == d
+					# 		event.name
+					# 	end
+					# end
 				else
 					[d.mday, {:class => "normalDay"}]
 				end
@@ -22,3 +27,12 @@
 		<%= render 'shared/sidebar' %>
 	</div>
 </div>
+
+<script>
+	// $(document).ready(function(){
+	// 	$('#calendar .specialDay').popover(
+	// 			data-content: "this is content",
+	// 			data-trigget: "hover"
+	// 		);
+	// });
+</script>

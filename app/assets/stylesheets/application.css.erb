@@ -12,12 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require 'calendar_styles/grey'
  */
-
-.navbar h2 {
-	display: inline-block;
-}
 
 body {
 	background-image: url(<%= asset_path 'background.png' %>);
@@ -27,22 +22,35 @@ body {
 	background: white;
 }
 
-.navbar {
-	background: #ffdab9;
+/********************
+* NAVBAR
+********************/
+
+.navbar h2 {
+	display: inline-block;
 }
 
-/*.navbar h2 a {
+.navbar {
+	background: #C7B2A2;
+}
+
+.navbar h2 a {
 	color: #98dd98;
-}*/
+}
 
 .navbar h2 a:hover {
-	color: #98fe98;
+	color: #88cc88;
 	text-decoration: none;
 }
+
+/********************
+* CALENDAR
+********************/
 
 #calendar table {
   border-collapse: collapse;
   width: 100%;
+  margin: 10px;
 }
 
 #calendar td,
@@ -103,5 +111,9 @@ body {
 }
 
 #calendar .specialDay {
+	background: #88cc88;
+}
+
+#calendar .specialDay:hover {
 	background: #98dd98;
 }
