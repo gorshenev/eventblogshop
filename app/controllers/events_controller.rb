@@ -64,7 +64,7 @@ class EventsController < ApplicationController
 			@event_days = {}
 
 			@events.each do |event|
-				@event_days[event.time.to_date] = event.name
+				@event_days[event.time.to_date] = event
 			end
 		end
 
