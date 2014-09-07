@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 	before_filter :get_latest_post, :get_new_product, :only => [:index, :show]
 
 	def index
+		@date = params[:month] ? Date.parse(params[:month] + "-01") : Date.today
 		@events = Event.all.order(time: :asc)
 		get_event_days
 	end

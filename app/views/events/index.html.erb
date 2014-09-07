@@ -2,14 +2,19 @@
 	<div class="span9">
 		<h1 style="text-align:center">Events</h1>
 		<div id="calendar">
-			<%= calendar(:year => Date.today.year, :month => Date.today.month, :first_day_of_week => 1) do |d| 
+			<%= calendar(:year => @date.year, :month => @date.month, :first_day_of_week => 1) do |d| 
 				if @event_days[d]
 					["#{d.mday} \n #{link_to @event_days[d].name, event_path(@event_days[d])}", {:class => "specialDay"}]
 				else
 					[d.mday, {:class => "normalDay"}]
 				end
 			end %>
-		</div>
+			<div id="month">
+				<%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+	    	<%=h @date.strftime("%B %Y") %>
+	    	<%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
+	    </div>
+  	</div>
 		<%= link_to 'New Event', new_event_path %>
 		<% @events.each do |event| %>
 			<div class="event" id="<%= dom_id(event) %>">
