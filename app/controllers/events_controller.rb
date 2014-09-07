@@ -61,10 +61,10 @@ class EventsController < ApplicationController
 		end
 
 		def get_event_days
-			@event_days = []
+			@event_days = {}
 
 			@events.each do |event|
-				@event_days.push(event.time.to_date)
+				@event_days[event.time.to_date] = event.name
 			end
 		end
 
