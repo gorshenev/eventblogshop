@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
 	def index
 		@date = params[:month] ? Date.parse(params[:month] + "-01") : Date.today
-		@events = Event.all.order(time: :asc)
+		@events = Event.all.order(time: :asc).where("time >= '#{Date.today.to_datetime}'")
 		get_event_days
 	end
 
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
 		def get_event_days
 			@event_days = {}
 
-			@events.each do |event|
+			Event.all.order(time: :asc).each do |event|
 				@event_days[event.time.to_date] = event
 			end
 		end

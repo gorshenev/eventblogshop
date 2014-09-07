@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span9">
-		<h1 style="text-align:center">Events</h1>
+		<h1 style="text-align:center">Event Calendar</h1>
 		<div id="calendar">
 			<%= calendar(:year => @date.year, :month => @date.month, :first_day_of_week => 1) do |d| 
 				if @event_days[d]
@@ -16,9 +16,10 @@
 	    </div>
   	</div>
 		<%= link_to 'New Event', new_event_path %>
+		<h2>Upcoming Events</h2>
 		<% @events.each do |event| %>
 			<div class="event" id="<%= dom_id(event) %>">
-				<h2><%= link_to event.name, event_path(event) %></h2>
+				<h3><%= link_to event.name, event_path(event) %></h3>
 				<p class="event_time"><%= event.time %></p>
 			</div>
 		<% end %>
@@ -27,12 +28,3 @@
 		<%= render 'shared/sidebar' %>
 	</div>
 </div>
-
-<script>
-	// $(document).ready(function(){
-	// 	$('#calendar .specialDay').popover(
-	// 			data-content: "this is content",
-	// 			data-trigget: "hover"
-	// 		);
-	// });
-</script>
