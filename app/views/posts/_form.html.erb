@@ -4,10 +4,23 @@
 		<%= f.text_field :title %>
 	</div>
 	<div class="field">
-		<%= f.label :body %>
-		<%= f.text_area :body %>
-	</div>
+  	<%= f.label :body %>
+    <textarea id="body-input" name="copy"></textarea>
+    <div style="display:none;">
+    	<input type="text" name="post[body]" id="post_body">
+    </div>
+   </div>
 	<div class="actions">
 		<%= f.submit %>
 	</div>
+	<div id="body-preview"></div>
 <% end %>
+
+<script type="text/javascript">
+  setup_wmd({
+    input: 	 "body-input",
+    preview: "body-preview",
+    output:  "post_body"
+  });
+</script>
+

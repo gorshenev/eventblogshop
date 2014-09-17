@@ -15,5 +15,5 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-
-// $('td').popover(data-placement='top');
+//= require wmd/wmd
+//= require wmd/showdown

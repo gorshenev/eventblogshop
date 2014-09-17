@@ -2,7 +2,7 @@
 	<div class="span9">
 		<h1 style="text-align:center">Event Calendar</h1>
 		<div id="calendar">
-			<%= calendar(:year => @date.year, :month => @date.month, :first_day_of_week => 1) do |d| 
+			<%= calendar(:year => @date.year, :month => @date.month, :first_day_of_week => 0) do |d| 
 				if @event_days[d]
 					["#{d.mday} \n #{link_to @event_days[d].name, event_path(@event_days[d])}", {:class => "specialDay"}]
 				else
