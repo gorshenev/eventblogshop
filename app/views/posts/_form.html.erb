@@ -5,7 +5,7 @@
 	</div>
 	<div class="field">
   	<%= f.label :body %>
-    <textarea id="body-input" name="copy"></textarea>
+    <%= f.text_area :raw_markdown %>
     <div style="display:none;">
     	<input type="text" name="post[body]" id="post_body">
     </div>
@@ -19,7 +19,7 @@
 
 <script type="text/javascript">
   setup_wmd({
-    input: 	 "body-input",
+    input: 	 "post_raw_markdown",
     preview: "body-preview",
     output:  "post_body"
   });

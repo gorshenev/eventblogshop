@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828015629) do
+ActiveRecord::Schema.define(version: 20140919211326) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140828015629) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "raw_markdown"
   end
 
   create_table "products", force: true do |t|
